@@ -178,14 +178,18 @@ def test_multibyte_archive_cannot_exceed_reader_blob_budget():
 
 @pytest.mark.skipif(__import__('os').name == 'nt', reason='POSIX background process-group acceptance')
 @pytest.mark.parametrize('parent_exits', [False, True])
-def test_summary_timeout_kills_cli_descendants_and_removes_auth_copy(tmp_path, monkeypatch, parent_exits):
+@pytest.mark.parametrize('adapter', ['codex', 'claude'])
+def test_summary_timeout_kills_cli_descendants_and_removes_auth_copy(tmp_path, monkeypatch, parent_exits, adapter):
     import os
     import subprocess
     import sys
     import tempfile
-    from team_memory.archive_summarizer import summarize
+    import importlib
+    module = importlib.import_module("team_memory.archive_summarizer" if adapter == "codex" else "team_memory.claude_summarizer")
+    summarize = module.summarize
+    monkeypatch.setenv("HOME", str(tmp_path))
     monkeypatch.setattr(tempfile, 'tempdir', str(tmp_path))
-    monkeypatch.setattr('team_memory.archive_summarizer.probe', lambda _: {})
+    monkeypatch.setattr(module, "probe", lambda _: {})
     pid_file = tmp_path / 'synthetic-child.pid'
     binary = tmp_path / 'fake-codex'
     binary.write_text('#!' + sys.executable + '\n' +
@@ -213,15 +217,24 @@ def test_summary_timeout_kills_cli_descendants_and_removes_auth_copy(tmp_path, m
             process.communicate()
             pytest.fail('synthetic CLI failed its readiness handshake')
         return process
+    native_killpg = os.killpg
+    killed = []
+    def terminate_once(pid, sig):
+        killed.append(pid)
+        return native_killpg(pid, sig)
     with monkeypatch.context() as scoped:
-        scoped.setattr('team_memory.archive_summarizer.subprocess.Popen', spawn_ready)
-        with pytest.raises(RuntimeError, match='timed out'):
-            summarize({'body':'synthetic'}, str(binary), auth_file=str(auth), timeout=1)
+        scoped.setattr(module.subprocess, 'Popen', spawn_ready)
+        scoped.setattr(os, 'killpg', terminate_once)
+        with pytest.raises(RuntimeError, match='timed out|timeout'):
+            kwargs = {'auth_file':str(auth)} if adapter == 'codex' else {}
+            summarize({'body':'synthetic'}, str(binary), timeout=1, **kwargs)
+    assert len(killed) == 1  # Never signal the same already-reaped process group twice.
     assert pid_file.exists()
     pid = int(pid_file.read_text())
     result = subprocess.run(['ps','-p',str(pid),'-o','stat='],capture_output=True,text=True)
     assert result.returncode != 0 or result.stdout.strip().startswith('Z')
     assert not list(tmp_path.glob('team-memory-summary-*/auth.json'))
+    assert not list(tmp_path.glob('team-memory-claude-summary-*'))
 
 
 def test_hermes_upgrade_repairs_owned_legacy_duplicate_keys(tmp_path, monkeypatch):

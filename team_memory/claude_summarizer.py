@@ -141,11 +141,16 @@ def summarize(record, binary, *, timeout=240):
 
         previous = None
 
+        stopped = False
         def stop():
+            nonlocal stopped
+            if stopped:
+                return
             try:
                 os.killpg(proc.pid, signal.SIGKILL)
             except ProcessLookupError:
                 pass
+            stopped = True
 
         def terminated(signum, frame):
             stop()

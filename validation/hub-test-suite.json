@@ -1,7 +1,8 @@
 {
   "status": "PASS",
-  "passed": 148,
+  "passed": 150,
   "platform": "macOS arm64 / Python 3.12",
   "new_mcp_and_skill_preserve_old_configs": true,
-  "hosted_ci": "see GitHub Actions after push"
+  "process_group_cleanup": "idempotent; parent alive/exited cases verified for Codex and Claude",
+  "hosted_ci": "see GitHub Actions for latest commit"
 }

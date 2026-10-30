@@ -73,7 +73,11 @@ def summarize(record, binary, *, auth_file=None, timeout=240):
         process = subprocess.Popen(args, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                                    stderr=subprocess.PIPE, text=True, cwd=root, env=env,
                                    start_new_session=os.name != "nt")
+        stopped = False
         def stop():
+            nonlocal stopped
+            if stopped:
+                return
             if os.name != "nt":
                 try:
                     os.killpg(process.pid, signal.SIGKILL)
@@ -81,6 +85,7 @@ def summarize(record, binary, *, auth_file=None, timeout=240):
                     pass
             elif process.poll() is None:
                 process.kill()
+            stopped = True
         def terminated(signum, frame):
             stop()
             raise SystemExit(128 + signum)
