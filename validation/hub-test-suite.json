@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "passed": 148,
+  "platform": "macOS arm64 / Python 3.12",
+  "new_mcp_and_skill_preserve_old_configs": true,
+  "hosted_ci": "see GitHub Actions after push"
+}

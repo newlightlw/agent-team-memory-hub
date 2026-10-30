@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "fresh_wheel_install": true,
+  "viewer_assets": true,
+  "demo": true,
+  "init_and_account_backup_restore": true,
+  "external_accounts_used": false
+}

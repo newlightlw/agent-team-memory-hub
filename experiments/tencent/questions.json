@@ -1,0 +1,19 @@
+{
+  "dataset_status": "PROPOSED_CASES_NOT_EXECUTED",
+  "source_policy": "Use the same mutually approved de-identified records in isolated instances; record exact versions and evidence.",
+  "cases": [
+    {"id":"current-decision","question":"What is the current confirmed decision?","check":"Return its author, revision, sources and actual confirmation status."},
+    {"id":"attributed-disagreement","question":"Where do the two members disagree?","check":"Preserve both attributed positions; do not synthesize agreement."},
+    {"id":"original-source","question":"Which original source supports this claim?","check":"Trace a derived record to the correct original content."},
+    {"id":"unverified-hypothesis","question":"Which claims remain unverified?","check":"Keep hypotheses separate from observed or confirmed findings."},
+    {"id":"old-version","question":"What changed from the previous version?","check":"Retrieve historical evidence without treating it as the current version."},
+    {"id":"superseded-decision","question":"Which previous decision was replaced, and why?","check":"Return replacement and source relations."},
+    {"id":"withdrawal","question":"Can a withdrawn source still surface through derived records?","check":"Check actual recall, derived cleanup and managed copies separately."},
+    {"id":"private-boundary","question":"Can the other member retrieve an unshared private item?","check":"Deny retrieval; do not accept a UI visibility claim as proof."},
+    {"id":"cross-tool-reuse","question":"Can a second native tool retrieve the same shared source?","check":"Observe a real tool invocation and matching record/version."},
+    {"id":"missing-evidence","question":"What happens when no source supports the question?","check":"Report absent evidence rather than inventing a conclusion."}
+  ],
+  "per_case_result_fields": ["backend_version","status","record_ids","observed_result","evidence_refs","latency_ms","model_usage_if_available"],
+  "allowed_statuses": ["NOT_RUN","BLOCKED","UNSUPPORTED","PASS","FAIL"],
+  "aggregation_policy": "Do not count unrun, blocked or unsupported cases as passed. Do not infer general superiority from this small set."
+}

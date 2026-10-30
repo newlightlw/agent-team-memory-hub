@@ -1,0 +1,20 @@
+{
+  "materials": "synthetic only",
+  "native_model_tool_trigger": "NOT_TESTED",
+  "human_members": "NOT_TESTED",
+  "authors": {
+    "alice": {
+      "archive": true,
+      "retry_deduplicated": true,
+      "query_and_readback": true,
+      "source": "codex"
+    },
+    "bob": {
+      "archive": true,
+      "retry_deduplicated": true,
+      "query_and_readback": true,
+      "source": "claude"
+    }
+  },
+  "status": "PASS"
+}

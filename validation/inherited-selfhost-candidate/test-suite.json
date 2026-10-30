@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "passed": 143,
+  "platform": "macOS arm64 / Python 3.12",
+  "warning": "upstream Starlette/httpx deprecation",
+  "hosted_ci": "NOT_RUN"
+}

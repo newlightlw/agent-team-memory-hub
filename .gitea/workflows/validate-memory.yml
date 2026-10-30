@@ -1,0 +1,31 @@
+name: 校验记忆文件
+# PR 改动 memory/ 时自动校验 frontmatter / id 唯一性 / 引用有效性, 阻止脏数据进 main。
+# 前提: Git 服务已启用 Actions runner。runner 未就绪时本文件先就位, 不影响仓库。
+
+on:
+  pull_request:
+    paths:
+      - 'memory/**'
+      - '.gitea/workflows/validate-memory.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出记忆仓库
+        uses: actions/checkout@v4
+
+      - name: 装 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 安装 team-memory 工具
+        run: |
+          # 方式 A(推荐): 从团队工具仓库安装, 把下面地址换成你的
+          pip install "git+https://git.example.com/team/agent-team-memory.git"
+          # 方式 B: 若需要在 workflow 中检出工具仓库:
+          #   pip install -e ./agent-team-memory
+
+      - name: 校验记忆(严格模式: warning 也算失败)
+        run: team-memory validate -p . --strict

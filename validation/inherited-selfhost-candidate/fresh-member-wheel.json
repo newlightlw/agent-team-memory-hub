@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "fresh_wheel_install": true,
+  "templates_present": true,
+  "cli_init_and_propose": true,
+  "accounts_used": false
+}

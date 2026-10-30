@@ -1,0 +1,245 @@
+{
+  "scope": "literal scan and metadata inventory; not a security or legal certification",
+  "dependencies": [
+    {
+      "name": "annotated-doc",
+      "version": "0.0.5",
+      "license": "MIT"
+    },
+    {
+      "name": "annotated-types",
+      "version": "0.8.0",
+      "license": "MIT"
+    },
+    {
+      "name": "anyio",
+      "version": "4.15.1",
+      "license": "MIT"
+    },
+    {
+      "name": "attrs",
+      "version": "26.1.0",
+      "license": "MIT"
+    },
+    {
+      "name": "build",
+      "version": "1.6.1",
+      "license": "MIT"
+    },
+    {
+      "name": "certifi",
+      "version": "2026.10.23",
+      "license": "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)"
+    },
+    {
+      "name": "cffi",
+      "version": "2.1.1",
+      "license": "MIT-0"
+    },
+    {
+      "name": "click",
+      "version": "8.5.0",
+      "license": "BSD-3-Clause"
+    },
+    {
+      "name": "cryptography",
+      "version": "50.0.2",
+      "license": "Apache-2.0 OR BSD-3-Clause"
+    },
+    {
+      "name": "fastapi",
+      "version": "0.162.0",
+      "license": "MIT"
+    },
+    {
+      "name": "h11",
+      "version": "0.16.0",
+      "license": "License :: OSI Approved :: MIT License"
+    },
+    {
+      "name": "httpcore",
+      "version": "1.0.9",
+      "license": "BSD-3-Clause"
+    },
+    {
+      "name": "httpx",
+      "version": "0.28.1",
+      "license": "License :: OSI Approved :: BSD License"
+    },
+    {
+      "name": "httpx-sse",
+      "version": "0.4.3",
+      "license": "MIT"
+    },
+    {
+      "name": "idna",
+      "version": "3.20",
+      "license": "BSD-3-Clause"
+    },
+    {
+      "name": "iniconfig",
+      "version": "2.3.1",
+      "license": "MIT"
+    },
+    {
+      "name": "jsonschema",
+      "version": "4.26.0",
+      "license": "MIT"
+    },
+    {
+      "name": "jsonschema-specifications",
+      "version": "2025.9.1",
+      "license": "MIT"
+    },
+    {
+      "name": "markdown-it-py",
+      "version": "4.2.0",
+      "license": "License :: OSI Approved :: MIT License"
+    },
+    {
+      "name": "mcp",
+      "version": "1.30.0",
+      "license": "License :: OSI Approved :: MIT License"
+    },
+    {
+      "name": "mdurl",
+      "version": "0.1.2",
+      "license": "License :: OSI Approved :: MIT License"
+    },
+    {
+      "name": "opentelemetry-api",
+      "version": "1.45.1",
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "packaging",
+      "version": "26.3",
+      "license": "Apache-2.0 OR BSD-2-Clause"
+    },
+    {
+      "name": "pip",
+      "version": "25.0.1",
+      "license": "License :: OSI Approved :: MIT License"
+    },
+    {
+      "name": "pluggy",
+      "version": "1.7.0",
+      "license": "License :: OSI Approved :: MIT License"
+    },
+    {
+      "name": "pycparser",
+      "version": "3.12",
+      "license": "BSD-3-Clause"
+    },
+    {
+      "name": "pydantic",
+      "version": "2.14.2",
+      "license": "MIT"
+    },
+    {
+      "name": "pydantic-settings",
+      "version": "2.16.2",
+      "license": "MIT"
+    },
+    {
+      "name": "pydantic_core",
+      "version": "2.50.2",
+      "license": "MIT"
+    },
+    {
+      "name": "Pygments",
+      "version": "2.21.0",
+      "license": "BSD-2-Clause"
+    },
+    {
+      "name": "PyJWT",
+      "version": "2.15.1",
+      "license": "MIT"
+    },
+    {
+      "name": "pyproject_hooks",
+      "version": "1.3.3",
+      "license": "MIT"
+    },
+    {
+      "name": "pytest",
+      "version": "9.2.0",
+      "license": "MIT"
+    },
+    {
+      "name": "python-dotenv",
+      "version": "1.2.4",
+      "license": "BSD-3-Clause"
+    },
+    {
+      "name": "python-multipart",
+      "version": "0.0.32",
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "PyYAML",
+      "version": "6.0.3",
+      "license": "License :: OSI Approved :: MIT License"
+    },
+    {
+      "name": "referencing",
+      "version": "0.37.0",
+      "license": "MIT"
+    },
+    {
+      "name": "rich",
+      "version": "15.0.0",
+      "license": "License :: OSI Approved :: MIT License"
+    },
+    {
+      "name": "rpds-py",
+      "version": "2026.9.1",
+      "license": "MIT"
+    },
+    {
+      "name": "setuptools",
+      "version": "84.2.1",
+      "license": "MIT"
+    },
+    {
+      "name": "shellingham",
+      "version": "1.5.4",
+      "license": "License :: OSI Approved :: ISC License (ISCL)"
+    },
+    {
+      "name": "sse-starlette",
+      "version": "3.6.0",
+      "license": "BSD-3-Clause"
+    },
+    {
+      "name": "starlette",
+      "version": "1.10.0",
+      "license": "BSD-3-Clause"
+    },
+    {
+      "name": "team-memory",
+      "version": "0.5.0",
+      "license": "MIT"
+    },
+    {
+      "name": "typer",
+      "version": "0.27.3",
+      "license": "MIT"
+    },
+    {
+      "name": "typing-inspection",
+      "version": "0.4.4",
+      "license": "MIT"
+    },
+    {
+      "name": "typing_extensions",
+      "version": "4.16.0",
+      "license": "PSF-2.0"
+    },
+    {
+      "name": "uvicorn",
+      "version": "0.54.0",
+      "license": "BSD-3-Clause"
+    }
+  ]
+}

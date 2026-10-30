@@ -1,0 +1,10 @@
+{
+  "old_config_read_by_new": true,
+  "new_config_read_by_old": false,
+  "new_admin_accepts_split_legacy_layout": false,
+  "old_account_writer_works_after_new_schema": false,
+  "rollback_failure_class": "OperationalError",
+  "conclusion": "PARTIAL_COMPATIBILITY_NOT_AN_IN_PLACE_UPGRADE",
+  "materials": "synthetic only; no production database or credentials copied",
+  "legacy_source_matches_production_sha256": true
+}

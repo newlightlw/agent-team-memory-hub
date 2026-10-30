@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "distribution": "agent-team-memory-hub",
+  "version": "0.5.0rc1",
+  "sha256": "09a9b9bd1dacc8a51c1152d6314808137ebc6c17775c67c86908c4f944b7c1a5",
+  "fresh_wheel": true,
+  "account_free_demo": true,
+  "new_entrypoint": true,
+  "account_backup_restore": true,
+  "accounts_used": false
+}

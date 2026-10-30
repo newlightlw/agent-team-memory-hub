@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "artifact": "team_memory-0.5.0-py3-none-any.whl",
+  "sha256": "6587013956b5b49a068ea521e23be3e976a856aafd1d83b56f37d8d28200daaa",
+  "installer": "uv into fresh venv with server.lock hashes; standard pip path separately passed",
+  "viewer_and_service_demo": true,
+  "admin_entrypoint": true,
+  "account_backup_restore": true,
+  "external_accounts_used": false
+}

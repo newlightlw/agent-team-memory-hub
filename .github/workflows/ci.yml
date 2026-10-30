@@ -1,0 +1,29 @@
+name: tests
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  verify:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        python: ['3.11', '3.13']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install --require-hashes -r requirements/server.lock
+      - run: python -m pip install --no-deps --no-build-isolation -e .
+      - run: python -m pip install pytest==9.2.0 build==1.6.1
+      - run: python -m pytest -q
+      - run: python -m build --wheel --no-isolation
+      - run: python scripts/verify-wheel.py dist/*.whl
+      - run: python scripts/verify-selfhost-wheel.py dist/*.whl
+      - run: bash -n scripts/install.sh scripts/install-server.sh
+      - run: python scripts/audit-distribution.py

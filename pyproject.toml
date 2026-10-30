@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agent-team-memory-hub"
+version = "0.5.0rc1"
+description = "团队 Agent Memory 共享系统 — 把 Cursor/Claude Code/Codex/Hermes 的记忆统一汇聚到 Git 管理的 Markdown 仓库"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Team Memory Maintainers" }]
+keywords = ["agent", "memory", "team", "git", "markdown", "claude-code", "cursor", "codex", "hermes"]
+dependencies = [
+    "typer>=0.12",
+    "rich>=13",
+    "pyyaml>=6",
+]
+
+[project.optional-dependencies]
+server = ["fastapi>=0.115,<1", "uvicorn>=0.30,<1", "httpx>=0.27,<1", "cryptography>=43", "mcp>=1,<2"]
+dev = [
+    "pytest>=8",
+    "pytest-cov>=5",
+]
+mcp = [
+    # MCP Server(team_memory/mcp_server.py)用; 不装不影响 CLI/Web。
+    # 团队要用 AI 工具动态读写记忆时: pip install -e ".[mcp]"
+    "mcp>=1,<2",
+]
+
+[project.scripts]
+team-memory = "team_memory.cli:app"
+team-memory-hub = "team_memory.cli:app"
+team-share-hub = "team_memory.server_entry:collaboration"
+team-memory-hub-sync = "team_memory.archive_setup:main"
+team-memory-hub-admin = "team_memory.server_entry:admin"
+
+[tool.setuptools.packages.find]
+include = ["team_memory*", "team_share*"]
+
+# 模板随包发布(install 后 importlib.resources 也能访问; 开发期用相对路径)
+[tool.setuptools.package-data]
+team_memory = ["templates/**/*", "templates/**/.*"]
+team_share = ["viewer/static/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+markers = [
+    "unit: 单元测试",
+    "integration: 集成测试(可能涉及文件系统/网络)",
+]

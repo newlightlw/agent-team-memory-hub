@@ -1,0 +1,42 @@
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# ===== 环境 & secrets =====
+.env
+.env.local
+.env.*.local
+
+# ===== mem0 向量探索的本地数据 =====
+# 早期 mem0 + DeepSeek + Chroma 实验(test_mem0.py)。本工具走纯 Git 路线, 不使用向量库。
+# 这些是 mem0 的本地存储, 不应进入仓库。
+mem0_chroma_db/
+mem0_history.db
+*.sqlite3
+*.sqlite3-*
+
+# ===== 误放的记忆文件(必须在 team-memory 数据仓库, 禁止出现在工具仓库) =====
+team_memory/memory/
+
+# ===== 本地生成的记忆仓库 demo =====
+/demo-memory/
+
+# ===== 编辑器 / 系统 =====
+.vscode/
+.idea/
+.cursor/
+.cursorindexingignore
+.specstory/
+.DS_Store
+.gstack/

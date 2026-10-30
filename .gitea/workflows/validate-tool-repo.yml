@@ -1,0 +1,28 @@
+name: 校验工具仓库
+# 阻止组员误把记忆 md 提交到 agent-team-memory 工具仓库(应提交到 team-memory 数据仓库)。
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  no-memory-in-tool-repo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 禁止 team_memory/memory 下的记忆文件
+        run: |
+          set -e
+          if [ -d team_memory/memory ]; then
+            bad=$(find team_memory/memory -name '*.md' ! -name '_*' 2>/dev/null || true)
+            if [ -n "$bad" ]; then
+              echo "::error::记忆文件不能放在工具仓库 team_memory/memory/ 下"
+              echo "$bad"
+              echo "请用: python -m team_memory save ... -p ~/team-memory"
+              exit 1
+            fi
+          fi
+          echo "OK: 工具仓库内无误入的记忆文件"

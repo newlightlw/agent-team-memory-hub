@@ -1,0 +1,9 @@
+# 来源与第三方说明
+
+本独立产品基于newlightlw/agent-team-memory的MIT源码继续开发（上游固定提交b3e7416d716b94361148730ecc660679ab50461c），从自托管候选b8196358cf3c4d5d1c29fd281eb79b12313bccc1分离，保留LICENSE。整合的team_share模块来自同一作者团队的独立开源候选代码，基础来源提交c47bc7aa8991d297063776e78d00cb2d022d9be7；仅导入筛选后的源文件、文档和脱敏测试，不导入实例数据库、配置、凭证或历史运维材料。
+
+依赖项分别受其自身许可证约束，运行锁定版本见requirements/runtime.lock与requirements/server.lock。Python依赖并不因本项目MIT声明而重新授权；发布构建通过scripts/audit-distribution.py列出实际安装元数据和许可证字段，供审阅。未打包Codex、Claude Code、GitHub CLI、Nginx或certbot二进制；使用者自行安装并遵守其条款。
+
+experiments/tencent仅包含隔离对照准备脚本及固定源码引用，没有复制TencentDB-Agent-Memory的实现或镜像，不将其许可证改为本项目MIT；研究结果不作为本产品性能声明。
+
+本产品不隶属于GitHub、飞书、OpenAI或Anthropic。商标归各自所有。

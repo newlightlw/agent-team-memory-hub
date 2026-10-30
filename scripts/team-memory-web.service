@@ -1,0 +1,17 @@
+[Unit]
+Description=Team Memory Web UI (shared read-only browser)
+After=network.target
+
+[Service]
+Type=simple
+User=team-memory
+Group=team-memory
+WorkingDirectory=/opt/agent-team-memory
+Environment=TEAM_MEMORY_ROOT=/srv/team-memory
+Environment=TEAM_MEMORY_PYTHON=/usr/bin/python3
+ExecStart=/usr/bin/python3 -m team_memory web -p /srv/team-memory --no-browser
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

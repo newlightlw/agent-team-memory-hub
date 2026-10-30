@@ -1,0 +1,10 @@
+recursive-include team_memory/templates *
+recursive-include docs *.md
+recursive-include .gitea *
+include README.md
+include LICENSE
+
+recursive-include team_share/viewer/static *
+recursive-include deploy *
+recursive-include requirements *.lock
+include THIRD_PARTY_NOTICES.md

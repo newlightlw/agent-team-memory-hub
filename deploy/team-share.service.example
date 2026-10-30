@@ -1,0 +1,16 @@
+[Unit]
+Description=AI Native Team Share
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/absolute/path/to/checkout
+EnvironmentFile=/absolute/path/to/private/secrets.env
+ExecStart=/absolute/path/to/checkout/.venv/bin/python -m team_share.collaboration serve --config /absolute/path/to/private/config.json --port 8791
+Restart=on-failure
+RestartSec=5
+UMask=0077
+NoNewPrivileges=true
+
+[Install]
+WantedBy=default.target

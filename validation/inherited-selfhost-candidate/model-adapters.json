@@ -1,0 +1,16 @@
+{
+  "codex": {
+    "status": "PASS",
+    "six_fields": true,
+    "nonempty": true,
+    "tool_audit": "zero tools enforced and output checked",
+    "source": "synthetic only"
+  },
+  "claude": {
+    "status": "PASS",
+    "six_fields": true,
+    "nonempty": true,
+    "tool_audit": "schema output only; no execution tools, MCP, plugins or skills",
+    "source": "synthetic only"
+  }
+}
